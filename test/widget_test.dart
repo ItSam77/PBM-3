@@ -1,30 +1,27 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:pbm2/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('App shows friends list', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that the app title is displayed
+    expect(find.text('Esia Friend'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Verify that all friends are displayed
+    expect(find.text('Nur Adam Mahfudh'), findsOneWidget);
+    expect(find.text('Samuel Nardus H. Sinaga'), findsOneWidget);
+    expect(find.text('Agung Sedayu'), findsOneWidget);
+    expect(find.text('Farhan Ramadhan'), findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Optionally, you can test navigation (this is a more complex test)
+    // For example, tapping on Samuel's container:
+    // await tester.tap(find.text('Samuel Nardus H. Sinaga'));
+    // await tester.pumpAndSettle(); // Wait for navigation animation
+    // expect(find.text('Samuel Profile'), findsOneWidget);
+    // Note: You'd need to mock the SamuelPage for this to work
   });
 }
