@@ -365,14 +365,14 @@ class CustomNavBar extends StatelessWidget {
           ),
           
           // Menu Button (3 lines)
-          IconButton(
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.black87,
-              size: 28,
-            ),
-            onPressed: onMenuTap,
-          ),
+          // IconButton(
+          //   icon: const Icon(
+          //     Icons.menu,
+          //     color: Colors.black87,
+          //     size: 28,
+          //   ),
+          //   onPressed: onMenuTap,
+          // ),
         ],
       ),
     );
