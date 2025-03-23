@@ -14,23 +14,37 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FriendsListScreen(),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+        ),
+      ),
+      home: const FriendsListScreen(),
     );
   }
 }
 
-class FriendsListScreen extends StatelessWidget {
+class FriendsListScreen extends StatefulWidget {
+  const FriendsListScreen({Key? key}) : super(key: key);
+
+  @override
+  State<FriendsListScreen> createState() => _FriendsListScreenState();
+}
+
+class _FriendsListScreenState extends State<FriendsListScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text(
-          "Esia Friend",
-          style: TextStyle(color: Colors.black),
-        ),
+        title: const Text("Esia Friend"),
         centerTitle: true,
       ),
+      drawer: _buildDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -77,6 +91,125 @@ class FriendsListScreen extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: CustomNavBar(
+        onMenuTap: () => _scaffoldKey.currentState?.openDrawer(),
+        isHome: true,
+      ),
+    );
+  }
+
+  Widget _buildDrawer() {
+    return Drawer(
+      child: Container(
+        color: Colors.white,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.blueAccent, Colors.deepPurple],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: const [
+                  CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 30,
+                    child: Icon(
+                      Icons.group,
+                      size: 30,
+                      color: Colors.blueAccent,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'Esia Friend',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    'Navigate to profiles',
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.person, color: Colors.orange),
+              title: const Text('Adam'),
+              onTap: () {
+                Navigator.pop(context); // Close drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const AdamPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.person, color: Colors.green),
+              title: const Text('Samuel'),
+              onTap: () {
+                Navigator.pop(context); // Close drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const SamuelPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.person, color: Colors.red),
+              title: const Text('Agung'),
+              onTap: () {
+                Navigator.pop(context); // Close drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const AgungPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.person, color: Colors.teal),
+              title: const Text('Farhan'),
+              onTap: () {
+                Navigator.pop(context); // Close drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const FarhanPage()),
+                );
+              },
+            ),
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.info_outline),
+              title: const Text('About'),
+              onTap: () {
+                Navigator.pop(context);
+                // Show about dialog
+                showAboutDialog(
+                  context: context,
+                  applicationName: 'Esia Friend',
+                  applicationVersion: '1.0.0',
+                  applicationIcon: const FlutterLogo(size: 30),
+                  children: [
+                    const Text('A simple app to navigate between profiles of Esia friends.'),
+                  ],
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
@@ -149,6 +282,98 @@ class FriendsListScreen extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ),
+      ),
+    );
+  }
+}
+
+// Custom Navigation Bar Widget (to be used in all pages)
+class CustomNavBar extends StatelessWidget {
+  final VoidCallback? onBackTap;
+  final VoidCallback onMenuTap;
+  final bool isHome;
+  final Color accentColor;
+
+  const CustomNavBar({
+    Key? key,
+    this.onBackTap,
+    required this.onMenuTap,
+    this.isHome = false,
+    this.accentColor = Colors.blue,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 80,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            offset: const Offset(0, -2),
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          // Back Button
+          IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: isHome ? Colors.grey.shade400 : Colors.black87,
+              size: 28,
+            ),
+            onPressed: isHome ? null : onBackTap ?? () => Navigator.pop(context),
+          ),
+          
+          // Home Button (Center Circle)
+          GestureDetector(
+            onTap: isHome ? null : () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (_) => const FriendsListScreen()),
+                (route) => false, // Remove all previous routes
+              );
+            },
+            child: Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: isHome ? accentColor : Colors.white,
+                border: Border.all(
+                  color: accentColor,
+                  width: 3,
+                ),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: accentColor.withOpacity(0.3),
+                    blurRadius: 8,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: Icon(
+                Icons.home,
+                color: isHome ? Colors.white : accentColor,
+                size: 30,
+              ),
+            ),
+          ),
+          
+          // Menu Button (3 lines)
+          IconButton(
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.black87,
+              size: 28,
+            ),
+            onPressed: onMenuTap,
+          ),
+        ],
       ),
     );
   }
