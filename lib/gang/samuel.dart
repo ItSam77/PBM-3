@@ -71,9 +71,8 @@ class _SamuelPageState extends State<SamuelPage> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          'Samuel is a student at Esia with interests in programming and design. '
-                          'He enjoys working on mobile applications and collaborating with his friends '
-                          'on interesting projects.',
+                            'Samuel Nardus Hamonangan Sinaga (NIM: 4522210069) adalah mahasiswa semester 6 Teknik Informatika dengan peminatan di bidang Data Science. '
+                            'Ia fokus pada analisis data, machine learning, dan pengolahan big data, serta terus mengembangkan keterampilannya di bidang tersebut.',
                           style: TextStyle(fontSize: 16),
                         ),
                       ],

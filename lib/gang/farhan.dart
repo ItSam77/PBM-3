@@ -71,9 +71,10 @@ class _FarhanPageState extends State<FarhanPage> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          'Farhan is always looking for ways to optimize solutions. '
-                          'His analytical mindset and attention to detail make him '
-                          'a valuable team member in any project.',
+                            'Farhan Ramadhan (NIM: 4522210103) adalah mahasiswa semester 6 '
+                            'Teknik Informatika dengan peminatan di bidang Data Science. '
+                            'Ia tertarik pada analisis data, machine learning, dan pengolahan '
+                            'big data, serta terus mengembangkan keterampilannya di bidang tersebut.',
                           style: TextStyle(fontSize: 16),
                         ),
                       ],

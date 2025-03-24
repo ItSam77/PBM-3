@@ -71,9 +71,8 @@ class _AgungPageState extends State<AgungPage> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          'Agung is known for his creative approach to problem-solving. '
-                          'He brings innovative ideas to projects and enjoys exploring '
-                          'new technologies with his friends.',
+                            'Agung Sedayu (NIM: 4522210100) adalah mahasiswa semester 6 Teknik Informatika dengan peminatan NCS. '
+                            'Fokusnya ada di bidang jaringan dan keamanan sistem, serta terus mengembangkan keterampilannya di dunia IT.',
                           style: TextStyle(fontSize: 16),
                         ),
                       ],

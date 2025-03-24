@@ -71,9 +71,10 @@ class _AdamPageState extends State<AdamPage> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          'Adam is a dedicated student with a passion for technology. '
-                          'He enjoys solving problems and working on creative projects '
-                          'with his friends at Esia.',
+                            'Nur Adam Mahfudh (NIM: 4522210068) adalah mahasiswa semester 6 '
+                            'Teknik Informatika dengan peminatan NCS. Ia tertarik pada jaringan, '
+                            'keamanan siber, dan sistem komputer, serta aktif belajar dan '
+                            'mengasah kemampuannya di bidang tersebut.',
                           style: TextStyle(fontSize: 16),
                         ),
                       ],
