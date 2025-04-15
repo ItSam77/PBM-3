@@ -10,7 +10,7 @@ class SamuelPage extends StatefulWidget {
 
 class _SamuelPageState extends State<SamuelPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,11 +37,8 @@ class _SamuelPageState extends State<SamuelPage> {
               const CircleAvatar(
                 radius: 70,
                 backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  size: 100,
-                  color: Colors.green,
-                ),
+                // child: Icon(Icons.person, size: 100, color: Colors.green),
+                backgroundImage: AssetImage('images/samuel.jpg'),
               ),
               const SizedBox(height: 20),
               const Text(
@@ -71,8 +68,8 @@ class _SamuelPageState extends State<SamuelPage> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                            'Samuel Nardus Hamonangan Sinaga (NIM: 4522210069) adalah mahasiswa semester 6 Teknik Informatika dengan peminatan di bidang Data Science. '
-                            'Ia fokus pada analisis data, machine learning, dan pengolahan big data, serta terus mengembangkan keterampilannya di bidang tersebut.',
+                          'Samuel Nardus Hamonangan Sinaga (NIM: 4522210069) adalah mahasiswa semester 6 Teknik Informatika dengan peminatan di bidang Data Science. '
+                          'Ia fokus pada analisis data, machine learning, dan pengolahan big data, serta terus mengembangkan keterampilannya di bidang tersebut.',
                           style: TextStyle(fontSize: 16),
                         ),
                       ],
@@ -113,11 +110,7 @@ class _SamuelPageState extends State<SamuelPage> {
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 30,
-                    child: Icon(
-                      Icons.person,
-                      size: 30,
-                      color: Colors.green,
-                    ),
+                    child: Icon(Icons.person, size: 30, color: Colors.green),
                   ),
                   SizedBox(height: 10),
                   Text(
@@ -156,7 +149,9 @@ class _SamuelPageState extends State<SamuelPage> {
                   applicationVersion: '1.0.0',
                   applicationIcon: const FlutterLogo(size: 30),
                   children: [
-                    const Text('A simple app to navigate between profiles of Esia friends.'),
+                    const Text(
+                      'A simple app to navigate between profiles of Esia friends.',
+                    ),
                   ],
                 );
               },

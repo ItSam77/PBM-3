@@ -10,7 +10,7 @@ class AdamPage extends StatefulWidget {
 
 class _AdamPageState extends State<AdamPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,11 +37,8 @@ class _AdamPageState extends State<AdamPage> {
               const CircleAvatar(
                 radius: 70,
                 backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  size: 100,
-                  color: Colors.orange,
-                ),
+                // child: Icon(Icons.person, size: 100, color: Colors.orange),
+                backgroundImage: AssetImage('images/adam.webp'),
               ),
               const SizedBox(height: 20),
               const Text(
@@ -71,10 +68,10 @@ class _AdamPageState extends State<AdamPage> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                            'Nur Adam Mahfudh (NIM: 4522210068) adalah mahasiswa semester 6 '
-                            'Teknik Informatika dengan peminatan NCS. Ia tertarik pada jaringan, '
-                            'keamanan siber, dan sistem komputer, serta aktif belajar dan '
-                            'mengasah kemampuannya di bidang tersebut.',
+                          'Nur Adam Mahfudh (NIM: 4522210068) adalah mahasiswa semester 6 '
+                          'Teknik Informatika dengan peminatan NCS. Ia tertarik pada jaringan, '
+                          'keamanan siber, dan sistem komputer, serta aktif belajar dan '
+                          'mengasah kemampuannya di bidang tersebut.',
                           style: TextStyle(fontSize: 16),
                         ),
                       ],
@@ -115,11 +112,7 @@ class _AdamPageState extends State<AdamPage> {
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 30,
-                    child: Icon(
-                      Icons.person,
-                      size: 30,
-                      color: Colors.orange,
-                    ),
+                    child: Icon(Icons.person, size: 30, color: Colors.orange),
                   ),
                   SizedBox(height: 10),
                   Text(
@@ -158,7 +151,9 @@ class _AdamPageState extends State<AdamPage> {
                   applicationVersion: '1.0.0',
                   applicationIcon: const FlutterLogo(size: 30),
                   children: [
-                    const Text('A simple app to navigate between profiles of Esia friends.'),
+                    const Text(
+                      'A simple app to navigate between profiles of Esia friends.',
+                    ),
                   ],
                 );
               },

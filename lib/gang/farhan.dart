@@ -10,7 +10,7 @@ class FarhanPage extends StatefulWidget {
 
 class _FarhanPageState extends State<FarhanPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,11 +37,8 @@ class _FarhanPageState extends State<FarhanPage> {
               const CircleAvatar(
                 radius: 70,
                 backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  size: 100,
-                  color: Colors.teal,
-                ),
+                // child: Icon(Icons.person, size: 100, color: Colors.teal),
+                backgroundImage: AssetImage('images/farhan.jpg'),
               ),
               const SizedBox(height: 20),
               const Text(
@@ -71,10 +68,10 @@ class _FarhanPageState extends State<FarhanPage> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                            'Farhan Ramadhan (NIM: 4522210103) adalah mahasiswa semester 6 '
-                            'Teknik Informatika dengan peminatan di bidang Data Science. '
-                            'Ia tertarik pada analisis data, machine learning, dan pengolahan '
-                            'big data, serta terus mengembangkan keterampilannya di bidang tersebut.',
+                          'Farhan Ramadhan (NIM: 4522210103) adalah mahasiswa semester 6 '
+                          'Teknik Informatika dengan peminatan di bidang Data Science. '
+                          'Ia tertarik pada analisis data, machine learning, dan pengolahan '
+                          'big data, serta terus mengembangkan keterampilannya di bidang tersebut.',
                           style: TextStyle(fontSize: 16),
                         ),
                       ],
@@ -115,11 +112,7 @@ class _FarhanPageState extends State<FarhanPage> {
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 30,
-                    child: Icon(
-                      Icons.person,
-                      size: 30,
-                      color: Colors.teal,
-                    ),
+                    child: Icon(Icons.person, size: 30, color: Colors.teal),
                   ),
                   SizedBox(height: 10),
                   Text(
@@ -158,7 +151,9 @@ class _FarhanPageState extends State<FarhanPage> {
                   applicationVersion: '1.0.0',
                   applicationIcon: const FlutterLogo(size: 30),
                   children: [
-                    const Text('A simple app to navigate between profiles of Esia friends.'),
+                    const Text(
+                      'A simple app to navigate between profiles of Esia friends.',
+                    ),
                   ],
                 );
               },

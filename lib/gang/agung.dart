@@ -10,7 +10,7 @@ class AgungPage extends StatefulWidget {
 
 class _AgungPageState extends State<AgungPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,11 +37,8 @@ class _AgungPageState extends State<AgungPage> {
               const CircleAvatar(
                 radius: 70,
                 backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  size: 100,
-                  color: Colors.red,
-                ),
+                // child: Icon(Icons.person, size: 100, color: Colors.red),
+                backgroundImage: AssetImage('images/agung.jpg'),
               ),
               const SizedBox(height: 20),
               const Text(
@@ -71,8 +68,8 @@ class _AgungPageState extends State<AgungPage> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                            'Agung Sedayu (NIM: 4522210100) adalah mahasiswa semester 6 Teknik Informatika dengan peminatan NCS. '
-                            'Fokusnya ada di bidang jaringan dan keamanan sistem, serta terus mengembangkan keterampilannya di dunia IT.',
+                          'Agung Sedayu (NIM: 4522210100) adalah mahasiswa semester 6 Teknik Informatika dengan peminatan NCS. '
+                          'Fokusnya ada di bidang jaringan dan keamanan sistem, serta terus mengembangkan keterampilannya di dunia IT.',
                           style: TextStyle(fontSize: 16),
                         ),
                       ],
@@ -113,11 +110,7 @@ class _AgungPageState extends State<AgungPage> {
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 30,
-                    child: Icon(
-                      Icons.person,
-                      size: 30,
-                      color: Colors.red,
-                    ),
+                    child: Icon(Icons.person, size: 30, color: Colors.red),
                   ),
                   SizedBox(height: 10),
                   Text(
@@ -156,7 +149,9 @@ class _AgungPageState extends State<AgungPage> {
                   applicationVersion: '1.0.0',
                   applicationIcon: const FlutterLogo(size: 30),
                   children: [
-                    const Text('A simple app to navigate between profiles of Esia friends.'),
+                    const Text(
+                      'A simple app to navigate between profiles of Esia friends.',
+                    ),
                   ],
                 );
               },
