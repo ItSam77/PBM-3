@@ -4,6 +4,7 @@ import 'gang/samuel.dart';
 import 'gang/adam.dart';
 import 'gang/agung.dart';
 import 'gang/farhan.dart';
+import 'gang/kesanpesan.dart';
 
 void main() => runApp(const MyApp());
 
@@ -88,6 +89,15 @@ class _FriendsListScreenState extends State<FriendsListScreen> {
                 0.07, 
                 3,
                 () => Navigator.push(context, MaterialPageRoute(builder: (_) => const FarhanPage())),
+              ),
+              const SizedBox(height: 60),
+              buildCustomContainer(
+                context,
+                "Kesan & Pesan",
+                Colors.blueAccent, 
+                0, 
+                4,
+                () => Navigator.push(context, MaterialPageRoute(builder: (_) => const FeedbackPage())),
               ),
             ],
           ),
@@ -188,6 +198,17 @@ class _FriendsListScreenState extends State<FriendsListScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const FarhanPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.feedback, color: Colors.blueAccent),
+              title: const Text('Kesan & Pesan'),
+              onTap: () {
+                Navigator.pop(context); // Close drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const FeedbackPage()),
                 );
               },
             ),
