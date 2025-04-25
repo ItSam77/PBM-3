@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
+import '../supabase_service.dart';
 
 class FarhanPage extends StatefulWidget {
   const FarhanPage({Key? key}) : super(key: key);
@@ -10,6 +11,24 @@ class FarhanPage extends StatefulWidget {
 
 class _FarhanPageState extends State<FarhanPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final SupabaseService supabaseService = SupabaseService();
+
+  String? bio;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchBio();
+  }
+
+  void fetchBio() async {
+    final result = await supabaseService.getBioById(3); 
+    setState(() {
+      bio = result;
+      isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,22 +77,21 @@ class _FarhanPageState extends State<FarhanPage> {
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'About Farhan:',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          'Farhan Ramadhan (NIM: 4522210103) adalah mahasiswa semester 6 '
-                          'Teknik Informatika dengan peminatan di bidang Data Science. '
-                          'Ia tertarik pada analisis data, machine learning, dan pengolahan '
-                          'big data, serta terus mengembangkan keterampilannya di bidang tersebut.',
-                          style: TextStyle(fontSize: 16),
-                        ),
+                        const SizedBox(height: 10),
+                        isLoading
+                            ? const CircularProgressIndicator()
+                            : Text(
+                                bio ?? 'Tidak ada data.',
+                                style: const TextStyle(fontSize: 16),
+                              ),
                       ],
                     ),
                   ),

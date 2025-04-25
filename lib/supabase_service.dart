@@ -13,4 +13,21 @@ class SupabaseService {
 
     return data?['bio'];
   }
-}
+
+  Future<void> insertPesan({
+    required String nama,
+    required String alamat,
+    required String kesan,
+    required String pesan,
+  }) async {
+    await supabase.from('pesan').insert({
+  'nama': nama,
+  'alamat': alamat,
+  'kesan': kesan,
+  'pesan': pesan,
+});
+
+
+
+  
+}}

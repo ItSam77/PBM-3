@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
+import '../supabase_service.dart';
 
 class FeedbackPage extends StatefulWidget {
   const FeedbackPage({Key? key}) : super(key: key);
@@ -19,13 +20,29 @@ class _FeedbackPageState extends State<FeedbackPage> {
   String kesan = "Belum ada kesan.";
   String pesan = "Belum ada pesan.";
 
-  void _submit() {
+  void _submit() async {
     setState(() {
       user = userController.text;
       alamat = alamatController.text;
       kesan = kesanController.text;
       pesan = pesanController.text;
     });
+
+    try {
+      await SupabaseService().insertPesan(
+        nama: user,
+        alamat: alamat,
+        kesan: kesan,
+        pesan: pesan,
+      );
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Berhasil dikirim ke Supabase")),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Gagal kirim ke Supabase: $e")),
+      );
+    }
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
+import '../supabase_service.dart';
 
 class AdamPage extends StatefulWidget {
   const AdamPage({Key? key}) : super(key: key);
@@ -10,6 +11,25 @@ class AdamPage extends StatefulWidget {
 
 class _AdamPageState extends State<AdamPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final SupabaseService supabaseService = SupabaseService();
+
+  String? bio;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchBio();
+  }
+
+  void fetchBio() async {
+    final result = await supabaseService.getBioById(1); // ID Adam = 1
+    setState(() {
+      bio = result;
+      isLoading = false;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,22 +78,21 @@ class _AdamPageState extends State<AdamPage> {
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'About Adam:',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          'Nur Adam Mahfudh (NIM: 4522210068) adalah mahasiswa semester 6 '
-                          'Teknik Informatika dengan peminatan NCS. Ia tertarik pada jaringan, '
-                          'keamanan siber, dan sistem komputer, serta aktif belajar dan '
-                          'mengasah kemampuannya di bidang tersebut.',
-                          style: TextStyle(fontSize: 16),
-                        ),
+                        const SizedBox(height: 10),
+                        isLoading
+                            ? const CircularProgressIndicator()
+                            : Text(
+                                bio ?? 'Tidak ada data.',
+                                style: const TextStyle(fontSize: 16),
+                              ),
                       ],
                     ),
                   ),

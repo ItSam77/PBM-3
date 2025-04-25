@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
+import '../supabase_service.dart';
 
 class AgungPage extends StatefulWidget {
   const AgungPage({Key? key}) : super(key: key);
@@ -10,7 +11,24 @@ class AgungPage extends StatefulWidget {
 
 class _AgungPageState extends State<AgungPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final SupabaseService supabaseService = SupabaseService();
 
+  String? bio;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchBio();
+  }
+
+  void fetchBio() async {
+    final result = await supabaseService.getBioById(2); 
+    setState(() {
+      bio = result;
+      isLoading = false;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,20 +76,21 @@ class _AgungPageState extends State<AgungPage> {
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'About Agung:',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          'Agung Sedayu (NIM: 4522210100) adalah mahasiswa semester 6 Teknik Informatika dengan peminatan NCS. '
-                          'Fokusnya ada di bidang jaringan dan keamanan sistem, serta terus mengembangkan keterampilannya di dunia IT.',
-                          style: TextStyle(fontSize: 16),
-                        ),
+                        const SizedBox(height: 10),
+                        isLoading
+                            ? const CircularProgressIndicator()
+                            : Text(
+                                bio ?? 'Tidak ada data.',
+                                style: const TextStyle(fontSize: 16),
+                              ),
                       ],
                     ),
                   ),

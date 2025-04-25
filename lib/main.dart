@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'dart:math' as math;
 import 'gang/samuel.dart'; 
 import 'gang/adam.dart';
@@ -6,7 +7,14 @@ import 'gang/agung.dart';
 import 'gang/farhan.dart';
 import 'gang/kesanpesan.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: 'https://lbbgysiobeziklmuwydq.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiYmd5c2lvYmV6aWtsbXV3eWRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU1ODg0NzEsImV4cCI6MjA2MTE2NDQ3MX0.SxyZoiAhccyN0O9TEO7Y2S42IU7lfDs-gcbKM8QCB8w',
+  );
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
