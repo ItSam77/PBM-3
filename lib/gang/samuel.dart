@@ -57,7 +57,7 @@ class _SamuelPageState extends State<SamuelPage> {
                 radius: 70,
                 backgroundColor: Colors.white,
                 // child: Icon(Icons.person, size: 100, color: Colors.green),
-                backgroundImage: AssetImage('images/samuel.jpg'),
+                backgroundImage: NetworkImage('https://lbbgysiobeziklmuwydq.supabase.co/storage/v1/object/public/images//samuel.jpg'),
               ),
               const SizedBox(height: 20),
               const Text(

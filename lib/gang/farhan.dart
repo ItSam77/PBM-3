@@ -57,7 +57,7 @@ class _FarhanPageState extends State<FarhanPage> {
                 radius: 70,
                 backgroundColor: Colors.white,
                 // child: Icon(Icons.person, size: 100, color: Colors.teal),
-                backgroundImage: AssetImage('images/farhan.jpg'),
+                backgroundImage: NetworkImage('https://lbbgysiobeziklmuwydq.supabase.co/storage/v1/object/public/images//farhan.jpg'),
               ),
               const SizedBox(height: 20),
               const Text(

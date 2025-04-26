@@ -58,7 +58,7 @@ class _AdamPageState extends State<AdamPage> {
                 radius: 70,
                 backgroundColor: Colors.white,
                 // child: Icon(Icons.person, size: 100, color: Colors.orange),
-                backgroundImage: AssetImage('images/adam.webp'),
+                backgroundImage: NetworkImage('https://lbbgysiobeziklmuwydq.supabase.co/storage/v1/object/public/images//adam.webp'),
               ),
               const SizedBox(height: 20),
               const Text(

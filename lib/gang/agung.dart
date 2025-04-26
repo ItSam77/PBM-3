@@ -56,7 +56,7 @@ class _AgungPageState extends State<AgungPage> {
                 radius: 70,
                 backgroundColor: Colors.white,
                 // child: Icon(Icons.person, size: 100, color: Colors.red),
-                backgroundImage: AssetImage('images/agung.jpg'),
+                backgroundImage: NetworkImage('https://lbbgysiobeziklmuwydq.supabase.co/storage/v1/object/public/images//agung.jpg'),
               ),
               const SizedBox(height: 20),
               const Text(
